@@ -1,0 +1,44 @@
+.app-container {
+  border: 5px solid red;
+  height: 99vh;
+  width: 99vw;
+  text-align: center;
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  // justify-content: center;
+  // grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  #header {
+    grid-column: 1 / -1;
+    border: 5px solid yellow;
+    margin-bottom: 3em;
+  }
+
+  .app-content-form {
+    border: 5px solid cyan;
+    height: 50%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+      // border: 5px solid orange;
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  .app-content-values {
+    border: 5px solid purple;
+    height: 50%;
+    width: 80%;
+    margin: 0 auto;
+  }
+}

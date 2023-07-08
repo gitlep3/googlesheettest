@@ -1,24 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { useState, useEffect } from "react";
+import { Form, Button, Image } from "react-bootstrap";
+import axios from "axios";
 
 function App() {
+  const [itemName, setItemName] = useState("");
+  const [itemPrice, setItemPrice] = useState("");
+  const [itemImage, setItemImage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "item-name") {
+      setItemName(value);
+    } else if (name === "item-price") {
+      setItemPrice(value);
+    } else if (name === "item-image") {
+      setItemImage(value);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="app-container">
+      <div id="header">
+        <h1>google sheets test</h1>
+      </div>
+
+      <div className="app-content-form">
+        <h2>Form to add values</h2>
+        <div className="form-container">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formItemName">
+              <Form.Label>Item Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="item-name"
+                placeholder="Enter item name..."
+                onChange={handleChange}
+                value={itemName}
+                className="app-form-control"
+              />
+            </Form.Group>
+          </Form>
+        </div>
+      </div>
+
+      <div className="app-content-values">
+        <h2>The values</h2>
+      </div>
+    </section>
   );
 }
 
