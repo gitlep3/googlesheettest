@@ -5,6 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import axios from "axios";
 
+const API = process.env.REACT_APP_API_URL;
+
 function App() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -16,9 +18,7 @@ function App() {
   }, []); // eslint-disable-line
 
   const fetchItems = async () => {
-    const res = await axios.get(
-      "https://sheet.best/api/sheets/f925ae2c-392f-4c71-979c-c6c7632f12bb"
-    );
+    const res = await axios.get(API);
 
     setItems(res.data);
   };
@@ -45,10 +45,7 @@ function App() {
     };
 
     await axios
-      .post(
-        "https://sheet.best/api/sheets/f925ae2c-392f-4c71-979c-c6c7632f12bb",
-        data
-      )
+      .post(API, data)
       .then((res) => {
         setItems([...items, res.data]);
         fetchItems();
